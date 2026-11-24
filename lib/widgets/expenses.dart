@@ -13,8 +13,13 @@ class Expenses extends StatefulWidget{
 }
 
 class _ExpensesState extends State<Expenses>{
+  void _addExpense(Expense expense){
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
   void _openAddExpenseOverlay(){
-    showModalBottomSheet(context: context, builder: (ctx) => NewExpense());
+    showModalBottomSheet(context: context, builder: (ctx) => NewExpense(onAddExpense:_addExpense));
   }
   final List<Expense> _registeredExpenses = [
     Expense(
